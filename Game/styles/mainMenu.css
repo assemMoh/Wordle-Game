@@ -1,0 +1,62 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color:#4e4e4e;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    max-height: 500px;
+    overflow: hidden;
+    position: relative;
+}
+
+.box{
+    width: 100px;
+    height: 100px;
+    border: 0px;
+    border-radius: 5px;
+    margin: 5px;
+    position: relative;
+}
+
+@font-face {
+    font-family: btnFonts;
+    src: url('../fonts/ChunkFive-Regular.otf');
+}
+
+
+
+#startBtn{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    border: 5px solid black;
+    border-radius: 25px;
+    background-color: #b59f3b;
+    font-family: btnFonts;
+    font-size: 2rem;
+    height: 90px;
+    width: 300px;
+}
+#quitBtn{
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+
+    border: 5px solid black;
+    border-radius: 25px;
+    background-color: #b59f3b;
+    font-family: btnFonts;
+    font-size: 2rem;
+    height: 80px;
+    width: 230px;
+}
+
+#startBtn:hover, #quitBtn:hover{
+    background-color: rgb(154, 106, 200);
+    cursor: pointer;
+}

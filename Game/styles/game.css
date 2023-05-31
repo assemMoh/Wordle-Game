@@ -1,0 +1,396 @@
+
+
+body{
+    background-color: var(--default);
+    position: relative;
+}
+
+
+:root {
+    --default: #121213;
+    --empty: #3a3a3c;
+    --wrong: #b59f3b;
+    --right: #538d4e;
+    --keyboard: #757575;
+    --light: #FBFBFB
+}
+h1{
+    text-align: center;
+    color: white;
+    font-size: 32px;
+    font-family: btnFonts;
+    font-weight: 700px;
+    display: flex;
+    align-items: center;
+}
+
+#display-board{
+    display: flex;
+    align-items: space-between;
+    flex-wrap: wrap;
+    gap: 5px;
+    position: relative;
+    /* background-color: #538d4e; */
+}
+
+#game-board{
+    /* margin-left: 300px;
+    margin-bottom: 50px; */
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.row{
+    display: flex;
+}
+.box{
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+    border: 2px solid var(--empty);
+    margin: 3px;
+    font-size: 1rem;
+    font-weight: 700;
+    box-sizing: border-box;
+    font-family: guessesFont;
+    height: 3rem;
+    width: 3rem;
+    transition-duration: 0.5s;
+    /* border-radius: 2px; */
+}
+
+@keyframes animateBorder {
+    to{
+        outline-style: solid;
+        outline-color: #737376;
+        outline-width: medium;
+    }
+}
+
+@keyframes clickedLetter {
+    to{
+        /* color: var(--keyboard);
+        background-color:white; */
+        color: black;
+        background-color:var(--empty);
+    }
+}
+
+@keyframes flip {
+    from {
+        /* transform: 'rotate(0deg)';
+        transition-duration: 0s; */
+    }
+    to {
+        transform-origin: 'rotate(20deg)';
+        transition-duration: 1s;
+    }
+}
+
+#keyboard-cont{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    /* margin: 1rem; */
+}
+
+#keyboard-cont div{
+    display: flex;
+}
+
+.second-row{
+    margin: 0.5rem 0
+}
+
+.keyboard-button {
+    color: white;
+    background-color:var(--keyboard) ;
+    font-size: 1.25rem;
+    font-weight: bold;
+    padding: 0.5rem;
+    margin: 0 2px;
+    cursor: pointer;
+    text-transform: uppercase;
+    border-radius: 4px;
+    border: 0;
+    margin: 0 6px 0 0;
+    height: 58px;
+    min-width: 40px;
+}
+.keyboard-button:hover{
+    transform: translateY(-6px);
+    transition: transform 0.1s;
+}
+
+
+[data-gameStatus]{
+    width: 500px;
+    height: 100px;
+    /* margin-left: 100px; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: black;
+    /* background-color: #538d4e; */
+    /* flex-wrap: wrap; */
+}
+
+[data-gameResult], [data-answer]{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 2rem;
+}   
+
+
+@font-face {
+    font-family: guessesFont;
+    src: url('../fonts/Cantarell-Regular.ttf');
+}
+
+@font-face {
+    font-family: btnFonts;
+    src: url('../fonts/ChunkFive-Regular.otf');
+}
+
+
+
+
+[data-playBtn]{
+    margin: 20px;
+    box-sizing: border-box;
+    border: 5px solid #3a3a3c;
+    outline-color: #3a3a3c;
+    border-radius: 7px;
+    height: 70px;
+    width: 200px;
+    font-size: 2rem;
+    background-color: #757575;
+    font-family: btnFonts;
+    /* visibility: hidden; */
+}
+
+[data-playBtn]:hover{
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+
+[data-nav]{
+    position: relative;
+}
+
+/* [data-cancelBtn]{
+    position: absolute;
+    right: 0;
+    width: 120px;
+    height: 40px;
+    background-color: rgb(190 18 60);;
+    font-size: 1.2rem;
+    box-sizing: border-box;
+    border: 2px     solid #3a3a3c;
+    outline-color: #3a3a3c;
+    border-radius: 7px;
+    font-family: btnFonts;
+} */
+
+
+[data-cancelBtn]:hover{
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+[data-statusGame]{
+    background-color: #3a3a3c;
+    width: 300px;
+    height: 300px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%);
+
+}
+
+
+/* ------------------------------- */
+
+
+
+.mynavbar{
+    display: flex;
+    flex-wrap: nowrap;
+    border-bottom: 1px solid black;
+    width:100%;
+    height: 60px;
+    position: sticky;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #737376;
+}
+
+
+.option, .menu{
+    display: flex;
+    margin: 10px;
+    width: 100px
+    /* width: 80px; */
+
+}
+
+.opt, .menu{
+    display: flex;
+    height: 40px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+
+.logo{
+
+    height: 100%;
+    display: flex;
+}
+
+
+
+
+.optionspagecontainer{
+
+    position: fixed;
+    top: 15vh;
+    left: 150%;
+    z-index: 1;
+}
+.StatusGame{
+    position: fixed;
+    top: 15vh;
+    left: 150%;
+    z-index: 1;
+}
+
+.optionspage {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid black;
+    background-color: white;
+    width: 450px;
+    height: 500px;
+    z-index: 1;
+    padding-top:1rem;
+    padding-left: 2rem;
+    border-radius: 1rem;
+    /* margin: auto; */
+    /* left: 40vw; */
+}
+.StateForm {
+    display: flex;
+    background-color: white;
+    /* justify-content: center; */
+    width: 450px;
+    height: 350px;
+    z-index: 1;
+    padding-top:.5rem;
+    padding-left: .5rem;
+    border-radius: 1rem;
+    /* margin: auto; */
+    /* left: 40vw; */
+}
+.closeState{
+    /* background-color: #538d4e; */
+    display: flex;
+    height: fit-content;
+    justify-content: center;
+    flex-direction: column;
+    align-items: end;
+    cursor: pointer;
+    font-size: x-large;
+    font-weight: bolder;
+    flex-direction: column;
+}
+
+.closesign {
+    margin-left: auto;
+    padding-right: 2rem;
+    font-size: x-large;
+    font-weight: bolder;
+    cursor: pointer;
+}
+
+.title{
+    /* font-family: 'Times New Roman', Times, serif; */
+    font-weight:900;
+    height: fit-content;
+    /* padding: 0; */
+    
+}
+
+
+.titleamr{
+    padding: 0px;
+    margin: 0px;
+}
+
+.letter{
+    width:40px;
+    height:40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    font-size: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bolder;
+    color: black;
+    margin: 3px;
+}
+
+.rowinstr {
+    display:flex;
+    /* flex: 2rem; */
+}
+
+.bg-success{
+    background-color: var(--right);
+}
+
+.bg-warning{
+    background-color: var(--wrong);
+}
+
+.bg-dark {
+    background-color: var(--empty);
+}
+
+/* .bodylight{
+    background-color: var(--light);
+} */
+
+.canvasandgrid {
+    position: relative;
+    margin:auto;
+    width: 90%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#display-board{
+    position: relative;
+    top: 5rem;
+}
+
+.gridcontainer{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.canvascontainer{
+    position: absolute;
+    left: 10px;
+    /* width: 25%; */
+    /* display: flex; */
+
+    /* justify-content: center; */
+}
